@@ -1,5 +1,5 @@
 const express = require('express');
-const { userRegistration, userLogin, updateProfile, delteTask, updateTaskStatus, selectTaskStatus, countStatus, createCb } = require('../controllers/userController');
+const { userRegistration, userLogin, updateProfile, delteTask, updateTaskStatus, selectTaskStatus, countStatus, createCb, me } = require('../controllers/userController');
 const authVerify = require('../middleware/authVerifyMiddleware');
 const multer = require('multer');
 const path = require('path')
@@ -31,6 +31,7 @@ const photo = multer({
 router.post('/registration',userRegistration)
 router.post('/login', userLogin)
 router.patch('/updateProfile',authVerify,photo, updateProfile);
+router.get('/me',authVerify,me)
 
 
 

@@ -44,7 +44,7 @@ const userLogin = async (req,res,next)=>{
         if(!login_user){
           return  next(createError(400,"user not found"))
         };
-        
+
         let pass = await bcrypt.compare(req.body.password,login_user.password);
         if(login_user){ 
             if(!pass){
@@ -76,20 +76,11 @@ const updateProfile = async (req,res,next)=>{
 
     try{
        const user_data = await User.findOne({email :req.user.email});
-
-       let photo = ''
        
-       if(user_data.photo == undefined){
-         photo = req.file.filename;
-       }
-
-       if(user_data.photo){
-         photo = user_data.photo;
-       }
 
        const update_user= await User.findOneAndUpdate({email :req.user.email},{
         ...req.body,
-        photo : photo
+        photo : ''
     });
        if(!update_user){
         next(createError(404,"user not update"))
@@ -98,6 +89,27 @@ const updateProfile = async (req,res,next)=>{
           res.status(200).json({
             message : "user update success"
           })
+       }
+
+    }catch(error){
+        next(error)
+        console.log(error);
+    }
+
+};
+
+const me = async (req,res,next)=>{
+
+    try{
+       const user_data = await User.findOne({email :req.user.email});
+       
+
+      
+       if(!user_data){
+        next(createError(404,"user not update"))
+       }
+       if(user_data){
+          res.status(200).json(user_data)
        }
 
     }catch(error){
@@ -217,5 +229,6 @@ module.exports ={
     delteTask,
     updateTaskStatus,
     selectTaskStatus,
-    countStatus
+    countStatus,
+    me
 }

@@ -5,7 +5,7 @@ const cors = require('cors');
 const router = require('./api/routers/routers');
 const mongoDBConnection = require('./api/config/db');
 const errorHandler = require('./api/middleware/errorHandler');
-
+const bodyPerser = require('body-parser')
 const app = express();
 
 
@@ -13,6 +13,7 @@ const app = express();
 app.use(express.urlencoded({extended : false}));
 app.use(express.json());
 app.use(cors());
+
 
 
 

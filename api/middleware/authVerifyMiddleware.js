@@ -21,6 +21,7 @@ const authVerify = async (req,res,nex)=>{
              if(verify_token){ 
                 const {email} = verify_token
                 req.user = await User.findOne({email : email})
+               
                 nex()
              }
             
