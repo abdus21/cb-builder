@@ -4,6 +4,7 @@ import axios from 'axios';
 import Cookie from 'js-cookie'
 import { login_User } from '../../redux/login/action';
 import { useDispatch } from 'react-redux';
+import { Link } from 'react-router-dom';
 
 const Login = () => {
     const dispatch = useDispatch()
@@ -40,12 +41,13 @@ const Login = () => {
                             </div>
                             <div className="my-3">
                                 <label htmlFor="">Password</label>
-                                <input onChange={handleInput} name='password' value={input.password} type="text" className='form-control' />
+                                <input onChange={handleInput} name='password' value={input.password} type="password" className='form-control' />
                             </div>
                             <div className="my-3">
                                 <input type="submit" className='btn btn-primary form-control' />
                             </div>
                         </form>
+                        <div className='text-center'><Link to='/registration' className='text-center text-decoration-none' >Sing Up</Link></div>
                     </div>
                 </div>
             </div>

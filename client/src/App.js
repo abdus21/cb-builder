@@ -8,7 +8,8 @@ import AuthRedirect from './middleware/AuthRedirect';
 import Login from './pages/login/Login';
 import jsCookie from 'js-cookie';
 import { useDispatch } from 'react-redux';
-import { isLogin } from './redux/login/action';
+import { get_User, isLogin } from './redux/login/action';
+import Registration from './pages/registration/Registration';
 
 
 function App() {
@@ -17,22 +18,7 @@ function App() {
     const dispatch = useDispatch()
 
   useEffect(()=>{
-    try{
-      axios.get(`http://localhost:5000/api/v1/cb/me`,{
-        headers : {
-          'Authorization' : `Bearer ${token}`
-        }
-      })
-      .then(res=>{
-        dispatch(isLogin())
-        console.log(res.data);
-      })
-      .catch(err=>{
-        console.log(err);
-      })
-    }catch(err){
-      console.log(err);
-    }
+   dispatch(get_User())
   },[token])
 
   return (
@@ -41,6 +27,7 @@ function App() {
    <Routes >
     <Route path='/' element={<AuthenticetUser> <Logded /> </AuthenticetUser>}/>
     <Route path='/login' element={<AuthRedirect> <Login /></AuthRedirect>} />
+    <Route path='/registration' element={<AuthRedirect> <Registration /></AuthRedirect>} />
    </Routes>
    
     
