@@ -34,7 +34,7 @@ const Login = () => {
                 <div className="card shadow-sm">
                     <div className="card-body">
                         <h3>Sing In</h3>
-                        <form action="" onClick={handleSubmit}>
+                        <form action="">
                             <div className="my-3">
                                 <label htmlFor="">Email</label>
                                 <input name='email' value={input.email} onChange={handleInput} type="text" className='form-control' />
@@ -44,7 +44,7 @@ const Login = () => {
                                 <input onChange={handleInput} name='password' value={input.password} type="password" className='form-control' />
                             </div>
                             <div className="my-3">
-                                <input type="submit" className='btn btn-primary form-control' />
+                                <input onClick={handleSubmit} type="submit" className='btn btn-primary form-control' />
                             </div>
                         </form>
                         <div className='text-center'><Link to='/registration' className='text-center text-decoration-none' >Sing Up</Link></div>
