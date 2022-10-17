@@ -1,4 +1,4 @@
-import { GET_USER, IS_LOGIN, LOG_OUT } from "./actionType";
+import { GET_USER, IS_LOGIN, LOG_OUT, UPDATE_USER } from "./actionType";
 import initialState from "./initialState";
 
 
@@ -6,6 +6,12 @@ const getUserReducer = (state = initialState,{type,payload})=>{
     switch (type) {
         
         case GET_USER:
+            return {
+                ...state,
+                users : payload
+            };
+
+        case UPDATE_USER:
             return {
                 ...state,
                 users : payload

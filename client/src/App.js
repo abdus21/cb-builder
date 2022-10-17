@@ -11,6 +11,8 @@ import { checkToken, isLogin } from './redux/login/action';
 import Registration from './pages/registration/Registration';
 import toast, { Toaster } from 'react-hot-toast';
 import Home from './pages/home/Home';
+import TopNav from './components/TopNav/TopNav';
+import TemplateOne from './components/Resume/TemplateOne';
 
 
 
@@ -30,11 +32,12 @@ function App() {
     position="bottom-center"
     reverseOrder={false}
   />
-   
+
    <Routes >
     <Route path='/' element={<AuthenticetUser> <Home /> </AuthenticetUser>}/>
     <Route path='/registration' element={<AuthRedirect> <Registration /></AuthRedirect>} />
     <Route path='/login' element={<AuthRedirect> <Login /></AuthRedirect>} />
+    <Route path='/template-one' element={<AuthenticetUser><TemplateOne /></AuthenticetUser> } />
    </Routes>
    
     

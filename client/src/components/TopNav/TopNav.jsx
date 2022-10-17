@@ -30,7 +30,7 @@ console.log(users);
 
     <Navbar bg="light" className='pl-2' expand="lg">
       <Container className="row justify-content-between">
-        <div><Navbar.Brand href="#home">React-Bootstrap</Navbar.Brand></div>
+        <div><Navbar.Brand href="#home"><h3 className='mb-0 lh-1'>CB Builder</h3></Navbar.Brand></div>
 
         <div className='mr-5'>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
